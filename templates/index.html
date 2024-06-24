@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="bg-container">
+        <img class="bg" src="{{ url_for('static', filename='bg-2.jpg') }}">
+        <div class="logo-container">
+            <img class="logo" src="{{ url_for('static', filename='Logo.svg') }}">
+        </div>
+        <div class="content-container">
+            <h1>Planning Trip to</h1>
+            <h2>Anywhere in India</h2>
+            <p>We got you covered</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form method="get" action="/start">
+        <div class="dropdown">
+            <select name="From" id="From">
+                <option value="" disabled selected>From</option>
+                {% for city in cities %}
+                <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="symbol">
+            &#8593; &#8595;
+        </div>
+        <div class="dropdown">
+            <select name="To" id="To">
+                <option value="" disabled selected>To</option>
+                {% for city in cities %}
+                <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <input type="text" autocomplete="off" name="numberOfDays" placeholder="Number of Days" class="large-input">
+        <br>
+        <button type = "submit" class="generate-btn">Next</button>
+    </div>  
+
+{% endblock %}

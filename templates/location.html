@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% block styles %}
+        <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, 
+                #ff6d39, 
+                #ff8a5a, 
+                #ffa37a, 
+                #ffbb99, 
+                #ffd4b8, 
+                #ffebd9, 
+                #fff9ee, 
+                #f5faff, 
+                #e0f0ff, 
+                #c5e0ff, 
+                #aad1ff, 
+                #94b8ff); /* Gradient background with lighter shades of blue and orange */
+            background-attachment: fixed; /* Lock the background */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif; /* Specify a fallback font */
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px; /* Adjusted padding */
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 40px; /* Reduced margin */
+            font-weight: bold; /* Make bold */
+            color: #002853; /* Dark blue */
+        }
+
+        .tourist-location {
+            width: 80%; /* Adjusted width */
+            max-width: 800px; /* Set max width */
+            margin-bottom: 30px; /* Adjusted margin */
+            padding: 30px; /* Adjusted padding */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+            display: flex;
+            align-items: center; /* Align items horizontally */
+            justify-content: center; /* Align items vertically */
+        }
+
+        .tourist-location h2 {
+            font-size: 24px; /* Adjusted font size */
+        }
+
+        .checkbox {
+            width: 28px;
+            height: 28px;
+        }
+
+        .next {
+                background-color: #4CAF50; 
+                color: white;
+                border: none;
+                padding: 15px 30px; 
+                font-size: 32px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                margin-top: 20px;
+                width: 250px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto; /* Center horizontally */
+            }
+
+            .next:hover {
+                background-color: #45a049; 
+            }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .tourist-location h2 {
+                font-size: 20px;
+            }
+        }
+        </style>
+    {% endblock %}
+
+    <div class="container">
+        <h1>Tourist Location</h1>
+
+        {% for location in locations %}
+        <div class="tourist-location" id="location{{ loop.index }}">
+            <h2>{{ location.name }}</h2>
+            <p>{{ location.desc }}</p>
+            <input type="checkbox" class="checkbox" name="check">
+        </div>
+        {% endfor %}
+    </div>
+    <form method = "get" action = "/hotel">
+        <button type = "submit" class = "next"> Next</button>
+{% endblock %}
