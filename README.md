@@ -1,0 +1,1 @@
+This is a project for ingenious hackathon. It builds an iteranary based on what places the user selects and the number of days. Although its not finished yet, but i plan on finishing it soon with teammates.
